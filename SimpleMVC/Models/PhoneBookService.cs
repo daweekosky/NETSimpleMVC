@@ -84,5 +84,19 @@ namespace SimpleMVC.Models
             contact.Id = contacts.Max(x => x.Id) + 1;
             contacts.Add(contact);
         }
+
+        internal bool Remove(int id)
+        {
+            Contact contact = contacts.Find(x => x.Id == id);
+            if(contact != null)
+            {
+                contacts.Remove(contact);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

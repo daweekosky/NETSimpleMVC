@@ -37,6 +37,19 @@ namespace SimpleMVC.Controllers
             return View();
         }
 
+        public IActionResult Delete(int id)
+        {
+            bool isDeleted = _phoneBook.Remove(id);
+            if (isDeleted)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
 
         public IActionResult Privacy()
         {
