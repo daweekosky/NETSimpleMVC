@@ -7,17 +7,18 @@ namespace SimpleMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PhoneBookService _phoneBook;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, PhoneBookService phoneBook)
         {
             _logger = logger;
+            _phoneBook = phoneBook;
         }
 
         public IActionResult Index()
         {
-            Random r = new Random();
-            ViewData["random"] = r.NextDouble();
-            return View();
+            return View(_phoneBook.GetContacts());
         }
 
         public IActionResult Privacy()
