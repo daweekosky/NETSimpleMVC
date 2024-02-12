@@ -21,6 +21,23 @@ namespace SimpleMVC.Controllers
             return View(_phoneBook.GetContacts());
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                _phoneBook.Add(contact);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

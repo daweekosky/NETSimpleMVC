@@ -78,5 +78,11 @@ namespace SimpleMVC.Models
         {
             return contacts;
         }
+
+        public void Add(Contact contact)
+        {
+            contact.Id = contacts.Max(x => x.Id) + 1;
+            contacts.Add(contact);
+        }
     }
 }
